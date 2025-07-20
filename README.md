@@ -22,22 +22,26 @@ Get an at-a-glance summary of your total savings and progress on individual goal
 Whether you’re on your phone or desktop, the app adapts smoothly for a great experience everywhere.
 
 ## Tech Stack
-Technology	What it Does
-Next.js	React framework for the frontend
-React Hooks	Manage state and side effects
-Tailwind CSS	Fast and modern styling
-Custom API Lib	Manage goals data (mock or real)
+| Tech             | Purpose                                  |
+|------------------|------------------------------------------|
+| Next.js	         | |React framework for the frontend        |
+|React Hooks       | Manage state and side effects            |
+| Tailwind CSS     | Fast and modern styling                  |
+| Custom API Lib   | Manage goals data (mock or real)         |
 
+---
+	
  ## How to Run Locally
 Prerequisites
-Node.js installed on your machine
+- [Node.js]  installed on your machine
 
 A terminal or command prompt
 
-Setup Steps
+#### Setup Steps
 bash
 Copy
 Edit
+
 ### Clone the repo
 git clone https://github.com/yourusername/smart-goal-planner.git
 cd smart-goal-planner
