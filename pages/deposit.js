@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 import { fetchGoals, updateGoal } from '../lib/goalAPI';
 import { useRouter } from 'next/router';
-import DepositForm from '../components/DepositForm';
 
 export default function DepositPage() {}
     const [amount, setAmount] = useState(''); 
     const [goals, setGoals] = useState([]);
-    const [selectedGoalId, setSelectedGoalId] = useState('');
-    const [depositAmount, setDepositAmount] = useState('');
+    const [selectedGoalId, setS] = useState('');
     const router = useRouter();
 
     useEffect(() => {
@@ -26,11 +24,13 @@ export default function DepositPage() {}
     };
 
     return (
-        <div style={{ padding: '20px' }}>
-            <h2>Deposit to Goal</h2>
-            <p>Select a goal to deposit funds:</p>
-            <form onSubmit={handleSubmit}>
-                <select value={selectedGoalId} onChange={(e) => setSelectedGoalId(e.target.value)} required>
+      <div className="max-w-xl mx-auto p-6 mt-8 bg-white shadow-md rounded-md">
+      <h2 className="text-2xl font-semibold mb-4 text-center text-blue-600">Deposit to Goal</h2>
+      <p className="mb-4 text-gray-700 text-sm text-center">Select a goal to deposit funds:</p>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+                <select value={selectedGoalId} onChange={(e) => setSelectedGoalId(e.target.value)} required
+                    className="w-full border border-gray-300 rounded-md p-2 text-gray-700">
                     <option value="">Select a Goal</option>
                     {goals.map(goal => (
                         <option key={goal.id} value={goal.id}>
@@ -44,8 +44,11 @@ export default function DepositPage() {}
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     required
+                     className="w-full border border-gray-300 rounded-md p-2"
                 />
-                <button type="submit">Deposit</button>
+                <button type="submit">
+                     className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200"
+                     Deposit</button>
             </form>
         </div>
     );
