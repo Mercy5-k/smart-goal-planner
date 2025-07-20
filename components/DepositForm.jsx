@@ -7,6 +7,7 @@ export default function DepositForm({ goals, onDeposit }) {
     const handleSubmit = (e) => {
         e.preventDefault();
            const depositAmount = parseFloat(amount);
+
     if (depositAmount > 0) {    
       onDeposit(selectedGoalId, depositAmount);
       setAmount("");
@@ -16,12 +17,15 @@ export default function DepositForm({ goals, onDeposit }) {
   };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <select
-                value={selectedGoalId}
-                onChange={(e) => setSelectedGoalId(e.target.value)}
-                required
-            >
+        <form onSubmit={handleSubmit}
+          className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md space-y-4">
+             <h2 className="text-xl font-semibold text-center text-green-600">Deposit to Goal</h2>
+             <select
+             value={selectedGoalId}
+             onChange={(e) => setSelectedGoalId(e.target.value)}
+             required
+             className="w-full border border-gray-300 rounded-md p-2 text-gray-700">
+
                 <option value="">Select a Goal</option>
                 {goals.map(goal => (
                     <option key={goal.id} value={goal.id}>
@@ -29,14 +33,18 @@ export default function DepositForm({ goals, onDeposit }) {
                     </option>
                 ))}
             </select>
+
             <input
                 type="number"
                 placeholder="Deposit Amount"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 required
+                className="w-full border border-gray-300 rounded-md p-2"
             />
-            <button type="submit">Deposit</button>
-        </form>
+            <button type="submit"
+             className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition duration-200">
+                Deposit</button>
+                </form>
     );
 }
