@@ -78,9 +78,19 @@ Hey, I’m the creator behind Smart Goal Planner, passionate about crafting simp
 
 Feel free to connect or suggest features, I love hearing from fellow goal-getters and coders alike!
 
+---
+
  ## Get In Touch
 GitHub:Mercy-5k
 
 Email: kiqsmercy@gmail.com
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+Feel free to use, modify, and distribute this project for personal or commercial purposes — just give credit where it’s due.
+
+
 
 
