@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchGoals, deleteGoal } from "../lib/goalAPI";
 import GoalCard from "../components/GoalCard";
+import Overview from "../components/Overview"   
 import Link from "next/link";
 
 export default function Home() {
@@ -28,6 +29,8 @@ export default function Home() {
         <Link href="/add"> Add Goal</Link> style={{ marginBottom: "20px", display: "inline-block" }}
         <Link href="/deposit">Deposit</Link> style={{ marginLeft: "10px", display: "inline-block" }}
         <hr/>
+        <Overview goals={goals} />
+    
         {goals.map((goal) => (
         <GoalCard key={goal.id} goal={goal} onDelete={() => handleDelete(goal.id)} />
         ))}
