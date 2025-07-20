@@ -26,9 +26,11 @@ export default function GoalForm({ onSubmit, initialGoal = {} }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md space-y-4">
-            <h2 className="text-xl font-semibold text-center text-blue-600">
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg">
+            <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-bold text-gray-800">
                 {initialGoal.id ? "Edit Goal" : "Create Goal"}</h2>
+            </div>
 
             <input type="text"
                      name="name"
@@ -71,7 +73,7 @@ export default function GoalForm({ onSubmit, initialGoal = {} }) {
                         className="w-full border border-gray-300 rounded-md p-2" />
 
             <button type="submit"
-             className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200">
+             className="mt-4 w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition-colors">
                 {initialGoal.id ? "Update Goal" : "Create Goal"}
             </button>
         </form>     

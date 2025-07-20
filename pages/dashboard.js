@@ -24,30 +24,45 @@ export default function Home() {
 
     return (
         <div className="max-w-4xl mx-auto p-6">
-          <h1 className="text-3xl font-bold mb-4 text-center text-blue-700">
+          <h1 className="bg-blue-600 text-white px-4 py-2">
             Smart Goal Planner
           </h1>
   
-          <div className="flex justify-between items-center mb-4">
-            <p className="text-lg font-medium text-gray-800">
+          <div className="mb-6 flex justify-between items-center">
+            <p className="text-white px-4 py-2 bg-gray-800 rounded">
               Total Saved: ${totalSaved}
             </p>
-            <div className="space-x-4"></div>
-            <Link href="/add" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-              Add Goal
-            </Link>
-            <Link href="/deposit" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-              Deposit
-            </Link>
+            <div className="space-x-4">
+              <Link href="/add" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                Add Goal
+              </Link>
+              <Link href="/deposit" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                Deposit
+              </Link>
+            </div>
           </div>
-  
+
           <hr className="my-6" />
-  
+
           <Overview goals={goals} />
-  
+
           <div className="mt-8 grid gap-6">
             {goals.map((goal) => (
-              <GoalCard key={goal.id} goal={goal} onDelete={() => handleDelete(goal.id)} />
+              <div key={goal.id} className="p-4 border rounded shadow-sm">
+                <h3 className="text-lg font-semibold">{goal.name}</h3>
+                <p>Saved: ${goal.savedAmount} / Target: ${goal.targetAmount}</p>
+                <div className="space-x-4 mt-2">
+                  <Link href={`/edit/${goal.id}`} className="text-blue-600 hover:underline mr-4">
+                    Edit
+                  </Link>
+                  <button
+                    onClick={() => handleDelete(goal.id)}
+                    className="text-red-600 hover:underline"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
             ))}
           </div>
         </div>

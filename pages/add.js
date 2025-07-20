@@ -1,9 +1,11 @@
+import Layout from '../components/Layout';
 import { useState } from 'react';
 import { addGoal } from '../lib/goalAPI';
 import { useRouter } from 'next/router';
 
 
 export default function AddGoalPage() {
+  const router = useRouter();
     const [form, setForm] = useState({
         name: '',
         targetAmount: '',
@@ -11,8 +13,6 @@ export default function AddGoalPage() {
         category: '',
         createdAt: new Date().toISOString()
     });
-
-    const router = useRouter();
 
     const handleChange = (e) => 
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -24,11 +24,12 @@ export default function AddGoalPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center px-4">
-            <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-lg">
-                <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">Add New Goal</h2>
+        <Layout>
+        <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+                <h2 className="bg-blue-500 text-white p-2 rounded">Add New Goal</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                    <input
+                   type="text"
               name="name"
               value={form.name}
               onChange={handleChange}
@@ -83,8 +84,16 @@ export default function AddGoalPage() {
           >
             Create Goal
           </button>
+
+          
         </form>
       </div>
-    </div>
+    </Layout>
   );
 }
+
+AddGoalPage.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};
+
+

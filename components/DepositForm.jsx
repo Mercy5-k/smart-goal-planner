@@ -24,7 +24,7 @@ export default function DepositForm({ goals, onDeposit }) {
              value={selectedGoalId}
              onChange={(e) => setSelectedGoalId(e.target.value)}
              required
-             className="w-full border border-gray-300 rounded-md p-2 text-gray-700">
+             className="w-full border border-gray-300 rounded-md p-2  ">
 
                 <option value="">Select a Goal</option>
                 {goals.map(goal => (

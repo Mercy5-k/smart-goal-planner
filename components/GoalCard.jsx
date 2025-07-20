@@ -79,8 +79,7 @@ export default function GoalCard({ goal, onDelete }) {
         <Link
           href={`/edit/${goal.id}`}
           className="text-blue-600 hover:underline text-sm font-medium"
-        >
-          Edit
+        >Edit
         </Link>
         <button
           onClick={() => onDelete(goal.id)}

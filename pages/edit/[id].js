@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchGoals, updateGoal } from "../lib/goalAPI";
+import { fetchGoals, updateGoal } from "../../lib/goalAPI";
 import { useRouter } from "next/router";
 
 export default function EditGoalPage() {
