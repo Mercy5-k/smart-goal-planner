@@ -19,33 +19,76 @@ export default function GoalCard({ goal, onDelete }) {
         status = "Completed";
     }
 
-    return (
-        <div style={{ border: "1px solid #ccc", padding: "20px", marginBottom: "20px" }}>
-            <h3>{goal.name}</h3>
-            <p>Category: {goal.category}</p>
-            <p>Saved Amount: ${goal.savedAmount} </p>
-            <div style={{ width: "100%", backgroundColor: "#f3f3f3", borderRadius: "5px" }}>
-                <div
-                    style={{
-                        width: `${progress}%`,
-                        backgroundColor: progress === 100 ? "green" : "blue",
-                        height: "20px",
-                        borderRadius: "5px"
-                    }}
-                ></div>
-            </div>
-            <p>Progress: {progress.toFixed(2)}%</p>
-            <p>Remaining: ${remaining}</p>
-            <p>Deadline: {deadline.toLocaleDateString()} ({daysLeft} days left
-            {isOverdue ? " - Overdue" : ""})</p>
-            <p>Status: {status}</p>
-            <div>
-                <Link href={`/edit/${goal.id}`} style={{ marginRight: "10px" }}>Edit</Link>
-                <button onClick={() => onDelete(goal.id)} style={{ backgroundColor: "red", color: "white", border: "none", padding: "5px 10px" }}>
-                    Delete
-                </button>
-            </div>
-        </div>
-    );
-}
+    const statusColor =
+    status === "Completed"
+      ? "text-green-600"
+      : status === "Overdue"
+      ? "text-red-600"
+      : status === "Behind Schedule"
+      ? "text-yellow-600"
+      : "text-blue-600";
 
+  const progressBarColor =
+    progress === 100
+      ? "bg-green-500"
+      : isOverdue
+      ? "bg-red-500"
+      : "bg-blue-500";
+
+    return (
+        <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow space-y-4">
+      <div className="flex justify-between items-start">
+        <div>
+            <h3 className="text-xl font-semibold text-gray-800">{goal.name}</h3>
+            <p className="text-sm text-gray-500">{goal.category}</p>
+        </div>
+        <span className={`text-sm font-medium ${statusColor}`}>{status}
+        </span>
+        </div>
+                <div>
+               <p className="text-gray-600">
+                  ${goal.savedAmount.toLocaleString()} saved of
+                  ${goal.targetAmount.toLocaleString()}
+                </p>
+             <div className="w-full bg-gray-200 rounded-full h-3 mt-1">
+          <div
+            className={`h-3 rounded-full ${progressBarColor}`}
+            style={{ width: `${Math.min(progress, 100)}%` }}
+          ></div>
+        </div>
+        <p className="text-right text-xs text-gray-500 mt-1">
+          {progress.toFixed(1)}%
+        </p>
+      </div>
+
+      <p className="text-sm text-gray-600">
+        Remaining:{" "}
+        <span className="font-semibold">
+          ${remaining > 0 ? remaining.toLocaleString() : 0}
+        </span>
+      </p>
+
+      <p className="text-sm text-gray-600">
+        Deadline:{" "}
+        <span className="font-medium">
+          {deadline.toLocaleDateString()} ({isOverdue ? "Overdue" : `${daysLeft} days left`})
+        </span>
+      </p>
+
+      <div className="flex justify-end gap-4 mt-4">
+        <Link
+          href={`/edit/${goal.id}`}
+          className="text-blue-600 hover:underline text-sm font-medium"
+        >
+          Edit
+        </Link>
+        <button
+          onClick={() => onDelete(goal.id)}
+          className="text-sm font-medium text-red-600 hover:underline"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  );
+}
