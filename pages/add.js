@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import GoalForm from '../components/GoalForm';
 import { addGoal } from '../lib/goalAPI';
 import { useRouter } from 'next/router';
+
 
 export default function AddGoalPage() {
     const [form, setForm] = useState({

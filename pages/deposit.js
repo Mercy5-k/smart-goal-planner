@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchGoals, updateGoal } from '../lib/goalAPI';
 import { useRouter } from 'next/router';
+import DepositForm from '../components/DepositForm';
 
 export default function DepositPage() {}
     const [amount, setAmount] = useState(''); 

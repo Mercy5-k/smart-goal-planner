@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchGoals, updateGoal } from "../lib/goalAPI";
 import { useRouter } from "next/router";
+import GoalForm from "../components/GoalForm";
 
 export default function EditGoalPage() {
     const [goal, setGoal] = useState(null);
