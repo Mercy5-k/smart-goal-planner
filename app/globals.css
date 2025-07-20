@@ -1,4 +1,3 @@
-/* @tailwind directives removed because Tailwind CSS is not processing this file, or configure your build tool to use Tailwind CSS */
 @import "tailwindcss";
 
 :root {
