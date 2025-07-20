@@ -31,6 +31,6 @@ export default function AddGoalPage() {
             <input name="targetAmount" type="number" placeholder="Target Amount" onChange={handleChange} required />
             <input name="category" placeholder="Category" onChange={handleChange} required />
             <input named="deadline" type="date" onChange={handleChange} required />
-            <button type="submit">Add Goal</button>
+            <button type="submit">Create Goal</button>
             </form>
     );
