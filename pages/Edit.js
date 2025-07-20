@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchGoals, updateGoal } from "../lib/goalAPI";
 import { useRouter } from "next/router";
-import GoalForm from "../components/GoalForm";
 
 export default function EditGoalPage() {
     const [goal, setGoal] = useState(null);
@@ -12,6 +11,7 @@ export default function EditGoalPage() {
         category: '',
         deadline: ''
     });
+
     const router = useRouter();
     const { id } = router.query;
 
@@ -43,16 +43,78 @@ export default function EditGoalPage() {
         router.push('/');
     };
 
-    if (!goal) return <p>Loading...</p>;
-
+if (!goal) {
     return (
-        <form onSubmit={handleSubmit} style={{ padding: '20px' }}>
-            <h2>Edit Goal</h2>
-            <input name="name" placeholder="Goal Name" value={form.name} onChange={handleChange} required />
-            <input name="targetAmount" type="number" placeholder="Target Amount" value={form.targetAmount} onChange={handleChange} required />
-            <input name="category" placeholder="Category" value={form.category} onChange={handleChange} required />
-            <input name="deadline" type="date" value={form.deadline} onChange={handleChange} required />
-            <button type="submit">Update Goal</button>
-        </form>
-    );
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
+        <p className="text-gray-600 text-lg" >Loading...</p>
+    </div>
+    );  
 }
+    return (
+          <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-6">
+      <div className="bg-white rounded-xl shadow-xl p-6 w-full max-w-md">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-2xl font-semibold text-gray-800">Edit Goal</h2>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+                <label className="block text-sm font-medium text-gray-700">Goal Name</label>
+                <input
+                    name="name"
+                    type="text"
+                    placeholder="Goal Name"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                />
+            </div>
+
+            <div>
+                <label className="block text-sm font-medium text-gray-700">Target Amount</label>
+                <input
+                    name="targetAmount"
+                    type="number"
+                    placeholder="Target Amount"
+                    value={form.targetAmount}
+                    onChange={handleChange}
+                    required
+                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                />
+            </div>
+
+            <div>
+                <label className="block text-sm font-medium text-gray-700">Category</label>
+                <input
+                    name="category"
+                    type="text"
+                    placeholder="Category"
+                    value={form.category}
+                    onChange={handleChange}
+                    required
+                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"    
+                />
+            </div>
+            <div>
+                <label className="block text-sm font-medium text-gray-700">Deadline</label>
+                <input
+                    name="deadline"
+                    type="date"
+                    value={form.deadline}
+                    onChange={handleChange}
+                    required
+                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                />  
+            </div>  
+            <button
+                type="submit"
+                className="w-full bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            >
+                Update Goal
+            </button>
+        </form>
+        </div>
+      </div>
+        </div>
+    );
+}   
