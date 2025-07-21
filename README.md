@@ -2,6 +2,7 @@
 Welcome to Smart Goal Planner, your personal assistant for setting, tracking, and smashing your financial goals. Whether you want to save for a dream trip, an emergency fund, or that shiny new gadget, this app keeps you focused and motivated with a clean, simple, and intuitive interface.
 
 ## Preview
+![Smart Goal Planner Screenshot](assets/goal.png)
 
 ## Why I Built This
 Life gets busy, and goals sometimes slip through the cracks. I wanted a tool that’s not just functional but actually enjoyable to use, something to help me plan my savings in a smart, stress-free way.
