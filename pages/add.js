@@ -92,8 +92,4 @@ export default function AddGoalPage() {
   );
 }
 
-AddGoalPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};
-
 
