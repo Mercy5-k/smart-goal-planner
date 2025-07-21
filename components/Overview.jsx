@@ -11,15 +11,15 @@ export default function Overview({goals}) {
 
              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center mb-6">
                 <div>
-                     <p className="text-sm text-gray-600">Total Goals</p>
+                     <p className="text-sm text-gray-200">Total Goals</p>
                      <p className="text-xl font-bold text-gray-900">{totalGoals}</p>
                      </div>
                      <div>
-                        <p className="text-sm text-gray-600">Total Saved</p>
+                        <p className="">Total Saved</p>
                         <p className="text-xl font-bold text-gray-800">${totalSaved.toLocaleString()}</p>
                         </div>
                         <div>
-                            <p className="text-sm text-gray-600">Completed Goals</p>
+                            <p className="text-sm text-gray-800">Completed Goals</p>
                             <p className="text-xl font-bold text-gray-800">{completedGoals}</p>
                             </div>
                             </div>

@@ -1,22 +1,30 @@
 import { useEffect, useState } from "react";
 import { fetchGoals, deleteGoal } from "../lib/goalAPI";
-import GoalCard from "../components/GoalCard";
 import Overview from "../components/Overview"   
 import Link from "next/link";
 
 export default function Home() {
     const [goals, setGoals] = useState([]);
+    const [deletingId, setDeletingId] = useState(null);
 
     useEffect(() => {
     fetchGoals().then(setGoals);
     }, []);
     
+
     const handleDelete = async (id) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this goal?");
+    if (!confirmDelete) return;
+
         try {
+        setDeletingId(id);
         await deleteGoal(id);
         setGoals(goals.filter((goal) => goal.id !== id));
         } catch (error) {
         console.error("Failed to delete goal:", error);
+        alert("Failed to delete goal. Please try again.");
+        }finally {
+          setDeletingId(null);
         }
     };
     
@@ -24,12 +32,12 @@ export default function Home() {
 
     return (
         <div className="max-w-4xl mx-auto p-6">
-          <h1 className="bg-blue-600 text-white px-4 py-2">
+          <h1 className="bg-blue-600 text-black px-4 py-2">
             Smart Goal Planner
           </h1>
   
           <div className="mb-6 flex justify-between items-center">
-            <p className="text-white px-4 py-2 bg-gray-800 rounded">
+            <p className="text-black px-4 py-2 bg-gray-900 rounded">
               Total Saved: ${totalSaved}
             </p>
             <div className="space-x-4">
@@ -57,9 +65,10 @@ export default function Home() {
                   </Link>
                   <button
                     onClick={() => handleDelete(goal.id)}
-                    className="text-red-600 hover:underline"
-                  >
-                    Delete
+                    disabled={deletingId === goal.id}
+                    className={`text-red-600 hover:underline ${deletingId === goal.id ? "opacity-50 cursor-not-allowed" : ""}`}
+                    >
+                    {deletingId === goal.id ? "Deleting..." : "Delete"}
                   </button>
                 </div>
               </div>
